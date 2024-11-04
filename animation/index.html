@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation</title>
+    <style>
+    /* Basic setup */
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #fff;
+    }
+
+    .morning, .characters {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end; /* Align items to the bottom */
+    }
+
+    /* Background images */
+    .bgm, .bgn {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        opacity: 1;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .bgn {
+        opacity: 0;
+    }
+
+    /* Keyframes for background change */
+    @keyframes backgroundChange {
+        0%, 50% {
+            opacity: 1;
+        }
+        50.01%, 100% {
+            opacity: 0;
+        }
+    }
+
+    /* Keyframes for character animations */
+    @keyframes runRightToLeft {
+        0% {
+            transform: translateX(-100vw);
+        }
+        100% {
+            transform: translateX(100vw);
+        }
+    }
+
+    /* Specific character styling */
+    .cat, .dog, .girl {
+        width: 100px;
+        position: absolute;
+        bottom: 6%; /* Position characters near the bottom */
+    }
+
+    /* Animations for each character */
+    .cat {
+        animation: runRightToLeft 10s linear infinite;
+        animation-delay: 0s;
+    }
+
+    .dog {
+        animation: runRightToLeft 10s linear infinite;
+        animation-delay: 1s;
+        transform: scale(0.8); /* Reduce dog size */
+        height: 5cm;
+        width: auto;
+    }
+
+    .girl {
+        animation: runRightToLeft 10s linear infinite;
+        animation-delay: 2s;
+        height: 8cm;
+        width: auto;
+    }
+   
+    /* Background change animation */
+    .bgm {
+        animation: backgroundChange 20s linear infinite;
+    }
+    
+    .bgn {
+        animation: backgroundChange 20s linear infinite reverse;
+    }
+    </style>
+</head>
+<body>
+    <div class="morning">
+        <img src="morningbg.jpeg" alt="morning" class="bgm">
+        <img src="night.avif" alt="night" class="bgn">
+    </div>
+    <div class="characters">
+        <img src="catb.png" alt="cat" class="cat">
+        <img src="dogb.png" alt="dog" class="dog">
+        <img src="girlb.png" alt="girl" class="girl">
+    </div>
+</body>
+</html>
